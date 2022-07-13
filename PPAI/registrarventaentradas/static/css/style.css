@@ -1,0 +1,27 @@
+.card-image{
+    height: 250px;
+}
+
+.completa{
+    background-color: #007bff;
+}
+
+.border-completa{
+    border-color: #007bff !important;
+}
+
+.por-exposicion{
+    background-color: #F0C03C;
+}
+
+.border-exposicion{
+    border-color: #F0C03C !important;
+}
+
+.card-tarifa{
+    width: 320px;
+}
+
+.bg-purple {
+    background-color: #6f42c1;
+}

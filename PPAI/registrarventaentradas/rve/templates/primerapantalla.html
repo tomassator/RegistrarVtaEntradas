@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Grupo3 - Museo</title>
+
+        {# Cargamos la librería #}
+        {% load bootstrap4 %}
+
+        {# CSS Bootstrap #}
+        {% bootstrap_css %}
+</head>
+
+<body>
+        <!-- As a link -->
+        <div class="text-center mb-5">
+                <div class=" border bg-primary rounded-lg text-white mx-auto">
+                <h1 class="py-5 px-3">Venta de entradas</h1>
+                </div>
+        </div>
+        <!-- As a heading -->
+        <div class="py-2 bg-light text-center border">
+                <form action="/venta/" method="GET" />
+                <input class="btn btn-outline-primary btn-lg" type="submit" value="Registrar Venta Entradas">
+                </form>
+        </div>
+
+        <div class="container mt-5">
+                <div class="row justify-content-center mb-2">
+                        <div class="col text-center">
+                                <a href="/pantallaPrincipal" target="_blank" class="btn btn-outline-primary">Ver pantalla Principal</a>
+                        </div>
+                        <div class="col text-center">
+                                <a href="/pantallaVisitantesSede" target="_blank" class="btn btn-outline-primary">Ver pantalla Sede(1)</a>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col text-center">
+                                <a href="/pantallaVisitantesSedeDos" target="_blank" class="btn btn-outline-primary">Ver pantalla Sede(2)</a>
+                        </div>
+                        <div class="col text-center">
+                                <a href="/pantallaVisitantesSedeTres" target="_blank" class="btn btn-outline-primary">Ver pantalla Sede(3)</a>
+                        </div>
+                </div>
+        </div>
+</body>
+
+</html>

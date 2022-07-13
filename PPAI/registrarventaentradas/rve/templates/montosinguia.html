@@ -1,0 +1,94 @@
+<head>
+  <title>Grupo3 - Museo</title>
+ {% load static %}
+  {# Cargamos la librería #} {% load bootstrap4 %} {# CSS Bootstrap #}
+  {%bootstrap_css %}
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+  <div class="text-center mb-5">
+    <div class="border bg-primary rounded-lg text-white mx-auto">
+        <h1 class="pt-5 px-3">Monto Con Guía</h1>
+        <h5 class="pb-5"> <a href="http://127.0.0.1:8000/" class="text-white">Venta de entradas</a> > <a href="http://127.0.0.1:8000/venta/" class="text-white">Ventas</a> > Monto Sin Guía</h5>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card-deck mb-3 text-center d-flex justify-content-center d-flex justify-content-center">
+      {% for tarifa in tarifas %}
+          {%if tarifa.tipoVisita.nombre == 'Completa'%}
+          <div class="mb-4 mr-4 border border-completa rounded-lg box-shadow overflow-auto">
+            <div class="card-header completa">
+          {%else%}
+          <div class="mb-4 mr-4 border border-exposicion rounded-lg box-shadow overflow-auto">
+            <div class="card-header por-exposicion">
+          {%endif%}
+          <h4 class="my-0 text-uppercase text-white">Tarifa {{tarifa.id}}</h4>
+        </div>
+        <div class="card-body card-tarifa">
+                    {% if tarifa.tipoDeEntrada.nombre == 'Menores' %}
+            <img class="card-image" src="{% static 'images/disaster-girl.png' %}" alt="Menores"/>
+            {% elif tarifa.tipoDeEntrada.nombre == 'Estudiantes' %}
+            <img class="card-image" src="{% static 'images/student.png' %}" alt="Estudiantes" />
+            {% elif tarifa.tipoDeEntrada.nombre == 'General' %}
+            <img class="card-image" src="{% static 'images/businessman.png' %}" alt="General" />
+            {% else %}
+            <img class="card-image" src="{% static 'images/harold.png' %}" alt="Jubilados" />
+            {%endif%}
+          <ul class="list-unstyled">
+            <!--<li class="py-2 h6 border-bottom">Id tarifa: {{tarifa.id}}</li>!-->
+            <li class="py-2 h6 border-bottom">
+              <span class="font-weight-bold">Fecha Fin Vigencia:</span> {{tarifa.fechaFinVigencia}}
+            </li>
+            <li class="py-2 h6 border-bottom">
+              <span class="font-weight-bold">Tipo de Visita:</span> {{tarifa.tipoVisita.nombre}}
+            </li>
+            <li class="py-2 h6 border-bottom">
+              <span class="font-weight-bold">Tipo de Entrada:</span> {{tarifa.tipoDeEntrada.nombre}}
+            </li>
+            <li class="py-2 h6 border-bottom"><span class="font-weight-bold">Monto:</span> ${{tarifa.monto}}</li>
+          </ul>
+          <form action="/duracion/" method="GET" class="m-0">
+            <input
+              class="btn btn-outline-primary btn-lg px-5 mx-5"
+              type="submit"
+              value="Seleccionar"
+            />
+            <input type="hidden" name="id" value="{{tarifa.id}}" />
+            <input
+              type="hidden"
+              name="fechaFinVigencia"
+              value="{{tarifa.fechaFinVigencia}}"
+            />
+            <input
+              type="hidden"
+              name="monto"
+              value="{{tarifa.monto}}"
+            />
+            <input
+              type="hidden"
+              name="tipoVisita"
+              value="{{tarifa.tipoVisita.nombre}}"
+            />
+            <input
+              type="hidden"
+              name="tipoEntrada"
+              value="{{tarifa.tipoDeEntrada.nombre}}"
+            />
+            <input
+              type="hidden"
+              name="conGuia"
+              value="false"
+            />
+          </form>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+
+        <div class="d-flex justify-content-center mt-5" >
+          <div class="row">
+            <a type="button" class="btn bg-warning" href="http://127.0.0.1:8000/">VOLVER A INICIO</a>
+          </div>
+        </div>
+</body>

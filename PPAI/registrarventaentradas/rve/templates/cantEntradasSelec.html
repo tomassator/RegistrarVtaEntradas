@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Grupo3 - Museo</title>
+
+  {# Cargamos la librería #} {% load bootstrap4 %} {# CSS Bootstrap #}
+  {%bootstrap_css %}
+</head>
+<body>
+  <div class="text-center mb-4">
+    <div class="border bg-primary rounded-lg text-white mx-auto">
+        <h1 class="pt-5 px-3">Cantidad de Entradas</h1>
+        <h5 class="pb-5"> 
+        <a href="http://127.0.0.1:8000/" class="text-white">Venta de entradas</a> > 
+        <a href="http://127.0.0.1:8000/venta/" class="text-white">Ventas</a> > 
+        {% if conGuia == 'true' %}
+        <a href="http://127.0.0.1:8000/montoconguia/" class="text-white">Monto Con Guía</a> > 
+        {% else %}
+        <a href="http://127.0.0.1:8000/montosinguia/" class="text-white">Monto Sin Guía</a> > 
+        {% endif %}
+        <a href='http://127.0.0.1:8000/duracion/?id={{idTarifa}}&fechaFinVigencia={{fechaFinVigencia}}&monto={{montoPorEntrada}}&tipoVisita={{tipoVisita}}&tipoEntrada={{tipoEntrada}}&conGuia={{conGuia}}' class="text-white">Cantidad de Entradas</a> >
+        Detalle
+        </h5>
+    </div>
+  </div>
+  <div>
+        <div class="py-2 text-center border-bottom">
+
+            <h3>La cantidad de entradas es: {{cantidadEntradas}}</h3>
+
+            </div>
+        <div class="py-2 text-center border-bottom">
+
+            <h3>El monto por entrada es: ${{montoPorEntrada}}</h3>
+
+            </div>
+        <div class="py-2 text-center">
+
+            <h3>El monto total es: ${{totalMontoVenta}}</h3>
+
+            </div>
+    </div>
+<div class ="py-2 bg-light text-center border">
+<form action="/confirmada/" method="GET">
+    <input class="btn btn-outline-primary btn-lg" type="submit" value="Confirmar">
+    <input type="hidden" name="monto" value="{{montoPorEntrada}}">
+    <input type="hidden" name="cantEntradas" value="{{cantidadEntradas}}">
+    <input type="hidden" name="idTarifa" value="{{idTarifa}}">
+    <input type="hidden" name="cantVisitantes" value="{{cantVisitantes}}">
+</form>
+
+<div class ="py-2 bg-light text-center border">
+<form action="/opciones/" method="GET">
+    <input class="btn btn-outline-primary btn-lg" type="submit" value="Cancelar">
+</form>
+
+
+    <div class="d-flex justify-content-center mt-5" >
+          <div class="row">
+            <a type="button" class="btn bg-warning" href="http://127.0.0.1:8000/">VOLVER A INICIO</a>
+          </div>
+    </div>
+</body>
+
+</html>

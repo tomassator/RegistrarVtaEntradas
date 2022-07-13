@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Grupo3 - Museo</title>
+
+    {# Cargamos la librería #} {% load bootstrap4 %} {# CSS Bootstrap #}
+    {%bootstrap_css %}
+  </head>
+
+  <body>
+    <div class="text-center mb-5">
+      <div class="border bg-primary rounded-lg text-white mx-auto">
+        <h1 class="py-5 px-3">{{nombre}}</h1>
+      </div>
+    </div>
+            <div class="pb-2 text-center">
+
+            <h3>La cantidad de visitantes actuales en la sede son : {{pantalla.cantidadActualVisitantes}}</h3>
+
+            </div>
+</body>
+</html>
